@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import AuthOptions from "../auth/AuthOptions";
+import logo from '../../assets/images/logo.png';
 
 class Navbar extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class Navbar extends Component {
     return (
     <nav className="navbar navbar-expand-lg fixed-top navbar-space-top" data-toggle="affix">
     <div className="container-fluid">
-      <a className="navbar-brand" href="/#">E-Commarce Store</a>
+      <a className="navbar-brand" href="/#"><img className="navLogo" src={logo} alt={logo}/></a>
       <button  onClick={this.toggleNavbar} className={`${classTwo}`} type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon" />
         </button>

@@ -56,6 +56,9 @@ nav .brand-logo {
 .logo{
     margin-left: 20px;
 }
+.navLogo{
+
+}
 
 .logo img{
     max-width: 90px;
@@ -219,6 +222,31 @@ li.MuiListItem-root.MuiListItem-gutters a {
   background-color:#007bb6
 }
 
+/*----------Form CSS--------------*/
+.login-form {
+  margin-top: 12rem;
+}
+.register-form{
+  margin-top: 10rem;
+}
+.Cetegories{
+  position: relative;
+  top: 14rem;
+  color: #fff;
+  text-align: center;
+}
+.About{
+  position: relative;
+  top: 14rem;
+  color: #fff;
+  text-align: center;
+}
+.Profile{
+  position: relative;
+  top: 14rem;
+  color: #fff;
+  text-align: center;
+}
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
@@ -262,7 +290,19 @@ html, body{
   justify-content: center;
 }
 .page{
-  margin: 4rem 0rem;
+
+}
+.backgroundAddImage{
+  background: url(/static/media/temp_banner.b8875b93.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+.bannerImg{
+  width: 100%;
+  height: auto;
+  position: relative;
+  top: -4rem;
 }
 
 /*------------Slider---------------*/

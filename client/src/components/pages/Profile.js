@@ -6,7 +6,8 @@ export default function Profile() {
   const { userData } = useContext(UserContext);
 
   return (
-    <div className="page">
+    <div className="page backgroundAddImage">
+      <div className="Profile">
       {userData.user ? (
         <h1>Welcome {userData.user.displayName}</h1>
       ) : (
@@ -15,6 +16,7 @@ export default function Profile() {
           <Link to="/login">Log in</Link>
         </>
       )}
+      </div>
     </div>
   );
 }

@@ -31,7 +31,7 @@ export default function Login() {
     }
   };
   return (
-    <div className="page">
+    <div className="page backgroundAddImage">
       <div className="container">
         <div className="row justify">
           <div className="col-md-8 col-md-offset-2">
