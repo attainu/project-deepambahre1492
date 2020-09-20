@@ -190,6 +190,6 @@ app.post("/logout",function(req,res) {
 
 app.use("/api",isUserLogged,apiRoutes);
 
-app.listen(3001);
+app.listen(5000);
 
-console.log('Running at port 3001');
+console.log('Running at port 5000');
