@@ -190,6 +190,7 @@ app.post("/logout",function(req,res) {
 
 app.use("/api",isUserLogged,apiRoutes);
 
-app.listen(5000);
-
-console.log('Running at port 5000');
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
+});
