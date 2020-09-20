@@ -1,7 +1,7 @@
 let express = require("express");
 let mongoose = require("mongoose");
 let ShoppingItem = require("../models/shoppingitem");
-const { compareSync } = require("bcrypt");
+const { compareSync } = require("bcryptjs");
 
 let router = express.Router();
 
