@@ -37,7 +37,11 @@ nav .brand-logo {
 .navbarContainer{
     height: 3.2rem;;
 }
-
+.auth-options li {
+  float: left;
+  padding: 1rem 0rem;
+  text-align: left;
+}
 .navbarStyle{
     position: fixed !important;
     width: 100%;
@@ -91,7 +95,9 @@ button:focus {
 .navbar-space-top {
     padding: 0.8rem 1rem;
     line-height: 0;
+    background-color: #e52b34;
 }
+
 nav ul li:hover {
   background: transparent;
   color:#e52b34;
@@ -224,9 +230,15 @@ li.MuiListItem-root.MuiListItem-gutters a {
 
 /*----------Form CSS--------------*/
 .login-form {
-  margin-top: 12rem;
+  margin-top: 10rem;
 }
 .register-form{
+  margin-top: 10rem;
+}
+.cetegories{
+  margin-top: 10rem;
+}
+.AddProduct{
   margin-top: 10rem;
 }
 .Cetegories{
@@ -289,9 +301,7 @@ html, body{
 .justify{
   justify-content: center;
 }
-.page{
 
-}
 .backgroundAddImage{
   background: url(/static/media/temp_banner.b8875b93.jpg);
     background-repeat: no-repeat;
@@ -307,7 +317,6 @@ html, body{
 
 /*------------Slider---------------*/
 
-  
   .slider-wrapper {
     position: relative;
     height: 100vh;

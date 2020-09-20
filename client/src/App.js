@@ -1,69 +1,78 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Axios from "axios";
-import Header from "./components/layout/Header";
-import Footer from "./components/layout/Footer";
-import Home from "./components/pages/Home";
-import Profile from "./components/pages/Profile";
-import About from "./components/pages/About";
-import Cetegories from "./components/pages/Cetegories";
-import Login from "./components/auth/Login";
-import Register from "./components/auth/Register";
-import UserContext from "./context/userContext";
+import React from 'react';
+//import logo from './logo.svg';
+import './App.css';
+import ShoppingForm from './components/ShoppingForm';
+import ShoppingList from './components/ShoppingList';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import {Route,Switch,Redirect} from 'react-router-dom';
+import LoginForm from './components/LoginForm';
+import Cetegories from './components/cetegories';
+import SignupForm from './components/SignUpForm';
+import {connect} from 'react-redux';
+import {getList} from './actions/shoppingActions';
 import './assets/css/style.css';
 import './assets/js/script.js';
-import "./style.css";
 
-export default function App() {
-  const [userData, setUserData] = useState({
-    token: undefined,
-    user: undefined,
-  });
+class App extends React.Component {
 
-  useEffect(() => {
-    const checkLoggedIn = async () => {
-      let token = localStorage.getItem("auth-token");
-      if (token === null) {
-        localStorage.setItem("auth-token", "");
-        token = "";
-      }
-      const tokenRes = await Axios.post(
-        "http://localhost:5000/users/tokenIsValid",
-        null,
-        { headers: { "x-auth-token": token } }
-      );
-      if (tokenRes.data) {
-        const userRes = await Axios.get("http://localhost:5000/users/", {
-          headers: { "x-auth-token": token },
-        });
-        setUserData({
-          token,
-          user: userRes.data,
-        });
-      }
-    };
+  /*
+  constructor(props){
+    super(props);
+    this.state = {
+      shoppinglist: []
+    }
+  }
+  */
+  componentDidMount() {
+    if(this.props.isLogged){
+      this.props.dispatch(getList(this.props.token));
+    }
+  }
 
-    checkLoggedIn();
-  }, []);
 
-  return (
-    <>
-      <BrowserRouter>
-        <UserContext.Provider value={{ userData, setUserData }}>
-          <Header />
-          <div className="app">
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/about" component={About} />
-              <Route exact path="/cetegories" component={Cetegories} />
-              <Route path="/profile" component={Profile} />
-              <Route path="/login" component={Login} />
-              <Route path="/register" component={Register} />
-            </Switch>
-          </div>
-          <Footer />
-        </UserContext.Provider>
-      </BrowserRouter>
-    </>
-  );
+  
+  render (){
+    return (
+      <div className="App">
+        <Navbar />
+        <hr/>
+        <Switch>
+          <Route exact path="/" render={
+            () => this.props.isLogged ?
+              (<Redirect to="/cetegories" />):(<LoginForm  />)
+          }/>
+          <Route exact path="/register" component={SignupForm } />
+          <Route exact path="/cetegories" render= { () =>
+            this.props.isLogged ?
+             (<Cetegories /> ) :
+             (<Redirect to="/" />)
+             } 
+          />
+          <Route exact path="/list" render= { () =>
+            this.props.isLogged ?
+             (<ShoppingList /> ) :
+             (<Redirect to="/" />)
+             } 
+          />
+         <Route path="/form" render = { () => 
+          this.props.isLogged ?
+            (<ShoppingForm /> ):(<Redirect to="/" />)
+            }
+          />
+          
+        </Switch>
+        <Footer />
+      </div>
+    );
+  }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    isLogged: state.login.isLogged,
+    token: state.login.token
+  }
+}
+
+export default connect(mapStateToProps)(App);
