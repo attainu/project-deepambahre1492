@@ -189,11 +189,11 @@ app.use("/api",isUserLogged,apiRoutes);
 app.use("/",indexRoutes);
 
 
-app.use(express.static(path.join(__dirname, 'client')));
+app.use(express.static(path.join(__dirname, 'build', 'client')));
 
 
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client', 'public/index.html'));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client','build', 'public/index.html'));
 });
 
 
