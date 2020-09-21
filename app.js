@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require("bcryptjs");
 const apiRoutes = require("./routes/apiroutes");
-const indexRoutes = require("./routes/index");
+//const indexRoutes = require("./routes/index");
 const mongoose = require("mongoose");
 const UserModel = require("./models/user");
 const SessionModel = require("./models/session");
@@ -186,7 +186,7 @@ app.post("/logout",function(req,res) {
 
 
 app.use("/api",isUserLogged,apiRoutes);
-app.use("/",indexRoutes);
+//app.use("/",indexRoutes);
 
 
 //Services static assets if in production
