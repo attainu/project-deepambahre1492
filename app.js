@@ -6,15 +6,10 @@ const indexRoutes = require("./routes/index");
 const mongoose = require("mongoose");
 const UserModel = require("./models/user");
 const SessionModel = require("./models/session");
+const path = require("path");
 require("dotenv").config();
 let app = express();
-/*
-//User DB
-mongoose.connect("mongodb://localhost/shoppingapp").then(
-    () => console.log("Connected to MongoDB!"),
-    (error) => console.log("Failed to connect to MongoDB. Reason: "+error)
-);
-*/
+
 mongoose.connect(
     process.env.MONGODB_URI || 'mongodb+srv://deepambahreShoppy:E-CommerceStore@e-commercestore.bavjy.mongodb.net/E-CommerceStore?retryWrites=true&w=majority',
     { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false, useUnifiedTopology: true })
@@ -192,6 +187,15 @@ app.post("/logout",function(req,res) {
 
 app.use("/api",isUserLogged,apiRoutes);
 app.use("/",indexRoutes);
+
+
+app.use(express.static(path.join(__dirname, 'client')));
+
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'public/index.html'));
+});
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
