@@ -3,8 +3,8 @@ import React from 'react';
 import './App.css';
 import Home from './components/Views/Home';
 import About from './components/Views/About';
-import productForm from './components/Categories/AddCategories';
-import productList from './components/Categories/Crud/CategoriesList';
+import ProductForm from './components/Categories/AddCategories';
+import ProductList from './components/Categories/Crud/CategoriesList';
 import Navbar from './components/Layout/Navbar';
 import Footer from './components/Layout/Footer';
 import {Route,Switch,Redirect} from 'react-router-dom';
@@ -56,13 +56,13 @@ class App extends React.Component {
           />
           <Route exact path="/list" render= { () =>
             this.props.isLogged ?
-             (<productList /> ) :
+             (<ProductList /> ) :
              (<Redirect to="/login" />)
              } 
           />
          <Route path="/form" render = { () => 
           this.props.isLogged ?
-            (<productForm /> ):(<Redirect to="/login" />)
+            (<ProductForm /> ):(<Redirect to="/login" />)
             }
           />
           <Route exact path="/profile" render= { () =>

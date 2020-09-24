@@ -60,9 +60,7 @@ nav .brand-logo {
 .logo{
     margin-left: 20px;
 }
-.navLogo{
 
-}
 
 .logo img{
     max-width: 90px;
@@ -304,6 +302,12 @@ html, body{
 .file-width{
   width: 100%;
   float: right;
+}
+th {
+  line-height: 1.4rem;
+}
+td {
+  line-height: 1.6rem;
 }
 
 /*------------Slider---------------*/
