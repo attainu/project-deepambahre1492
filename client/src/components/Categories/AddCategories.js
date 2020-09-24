@@ -1,15 +1,17 @@
 import React from 'react';
 import {Form,Button} from 'semantic-ui-react';
 import {connect} from 'react-redux';
-import {addToList} from '../actions/shoppingActions';
+import {addToList} from '../../actions/shoppingActions';
 
 class ShoppingForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            type: '',
-            count: 0,
-            price: 0
+            productName: '',
+            quantity: undefined,
+            price: undefined,
+            productColor: '',
+            productImage: ''
         }
     }
 
@@ -22,15 +24,19 @@ class ShoppingForm extends React.Component{
     onSubmit = (event) => {
         event.preventDefault();
         let item = {
-            type: this.state.type,
-            count: this.state.count,
-            price: this.state.price
+            productName: this.state.productName,
+            quantity: this.state.quantity,
+            price: this.state.price,
+            productColor: this.state.productColor,
+            productImage: this.state.productImage
         }
         this.props.dispatch(addToList(this.props.token,item));
         this.setState({
-            type: '',
-            count: 0,
-            price: 0
+            productName: '',
+            quantity: 0,
+            price: 0,
+            productColor: '',
+            productImage: ''
         })
     }
 
@@ -43,26 +49,27 @@ class ShoppingForm extends React.Component{
         <div className="row justify">
           <div className="col-md-10 col-md-offset-1">
             <div className="cetegories">
-            <Form onSubmit={this.onSubmit}>
+            <Form onSubmit={this.onSubmit} encType="multipart/form-data">
                 <Form.Field className="form-group">
                     <input type='text'
-                        name='type'
+                        name='productName'
                         className="form-control"
-                        placeholder="Type"
+                        placeholder="product Name"
                         onChange={this.onChange}
-                        value={this.state.type} 
+                        value={this.state.productName} 
                     />
-                    <Form.Field className="form-group">
+                </Form.Field>
+                <Form.Field className="form-group">
                     <input type='number'
-                        name='count'
-                        placeholder="Count"
+                        name='quantity'
+                        placeholder="Quantity"
                         className="form-control"
                         minimum = '0'
                         onChange={this.onChange}
-                        value={this.state.count} 
+                        value={this.state.quantity} 
                     />
-                    </Form.Field>
-                    <Form.Field className="form-group">
+                </Form.Field>
+                <Form.Field className="form-group">
                     <input type='number'
                         name='price'
                         placeholder="Price"
@@ -72,8 +79,25 @@ class ShoppingForm extends React.Component{
                         onChange={this.onChange}
                         value={this.state.price} 
                     />
-                    </Form.Field>
                 </Form.Field>
+                <Form.Field className="form-group">
+                    <input type='text'
+                        name='productColor'
+                        className="form-control"
+                        placeholder="Product Color"
+                        onChange={this.onChange}
+                        value={this.state.productColor} 
+                    />
+                </Form.Field>
+                <Form.Field className="form-group file-width">
+                    <input type='file'
+                        name='productImage'
+                        className="productImage"
+                        onChange={this.onChange}
+                        value={this.state.productImage} 
+                    />
+                </Form.Field>
+                
                 <Button type='submit'>Add</Button>
             </Form>
             </div>

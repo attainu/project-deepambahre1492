@@ -28,7 +28,7 @@ const saveToStorage = (state) => {
 const initialState = getInitialState();
 
 const shoppingReducer = (state=initialState,action) => {
-    console.log('shoppingReducer, action type: '+action.type);
+    //console.log('shoppingReducer, action type: '+action.type);
     let tempState = {};
     switch(action.type) {
         case GET_SHOPPINGLIST_SUCCESS:

@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {logout} from '../actions/loginActions';
-import logo from '../assets/images/logo.png';
+import {logout} from '../../actions/loginActions';
+import logo from '../../assets/images/logo.png';
 
 class Navbar extends React.Component {
     constructor(props) {
@@ -38,11 +38,11 @@ class Navbar extends React.Component {
                     <ul className="auth-options navbar-nav ml-auto">
           <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
           <li className="nav-item"><Link className="nav-link" to="/about">About</Link></li>
-          <li className="nav-item"><Link className="nav-link" to="/cetegories">Cetegories</Link></li>
+          <li className="nav-item"><Link className="nav-link" to="/categories">Categories</Link></li>
 <li className="nav-item"><Link className="nav-link" to="/list">list</Link></li>
           <li className="nav-item"><Link className="nav-link" to="/form">AddProduct</Link></li>
           <li className="nav-item"><Link className="nav-link" to="/profile">Profile</Link></li>
-          <li className="nav-item"><Link className="nav-link" to="/" onClick={this.logout}>Log out</Link></li>
+          <li className="nav-item"><Link className="nav-link" to="/login" onClick={this.logout}>Log out</Link></li>
 
     </ul>
                     </div>
@@ -66,9 +66,8 @@ class Navbar extends React.Component {
 
 <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
 <li className="nav-item"><Link className="nav-link" to="/about">About</Link></li>
-<li className="nav-item"><Link className="nav-link" to="/product">Cetegories</Link></li>
 <li className="nav-item"><Link className="nav-link" to="/contact">Contact</Link></li>
-<li className="nav-item"><Link className="nav-link" to="/">Login</Link></li>
+<li className="nav-item"><Link className="nav-link" to="/login">Login</Link></li>
 <li className="nav-item"><Link className="nav-link" to="/register">SignUp</Link></li>
 
 </ul>

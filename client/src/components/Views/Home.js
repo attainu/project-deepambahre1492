@@ -1,5 +1,5 @@
 import React from "react";
-import HomeCarousel from '../carousel/carousel';
+import HomeCarousel from '../Carousel/Carousel';
 export default function Home() {
 
   return (

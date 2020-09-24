@@ -4,7 +4,7 @@ import Row from './Row';
 import RemoveRow from './RemoveRow';
 import EditRow from './EditRow';
 import {connect} from 'react-redux';
-import {getList,removeFromList,editItem} from '../actions/shoppingActions';
+import {getList,removeFromList,editItem} from '../../../actions/shoppingActions';
 
 class ShoppingList extends React.Component{
 
@@ -104,9 +104,11 @@ class ShoppingList extends React.Component{
                 <Table celled>
                     <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell>Type</Table.HeaderCell>
-                            <Table.HeaderCell>Count</Table.HeaderCell>
+                            <Table.HeaderCell>product Name</Table.HeaderCell>
+                            <Table.HeaderCell>Quantity</Table.HeaderCell>
                             <Table.HeaderCell>Price</Table.HeaderCell>
+                            <Table.HeaderCell>Product Color</Table.HeaderCell>
+                            <Table.HeaderCell>product Image</Table.HeaderCell>
                             <Table.HeaderCell>Remove</Table.HeaderCell>
                             <Table.HeaderCell>Edit</Table.HeaderCell>
                         </Table.Row>

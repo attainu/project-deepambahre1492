@@ -1,8 +1,8 @@
 import React from 'react';
 import {Table, Button} from 'semantic-ui-react';
-import Row from './cetegoriesRow';
+import Row from './CategoriesRow';
 import {connect} from 'react-redux';
-import {getList} from '../actions/shoppingActions';
+import {getList} from '../../actions/shoppingActions';
 
 class ShoppingList extends React.Component{
 
@@ -48,9 +48,11 @@ class ShoppingList extends React.Component{
                 <Table celled>
                     <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell>Type</Table.HeaderCell>
-                            <Table.HeaderCell>Count</Table.HeaderCell>
+                            <Table.HeaderCell>product Name</Table.HeaderCell>
+                            <Table.HeaderCell>quantity</Table.HeaderCell>
                             <Table.HeaderCell>Price</Table.HeaderCell>
+                            <Table.HeaderCell>Product Color</Table.HeaderCell>
+                            <Table.HeaderCell>product Image</Table.HeaderCell>
                         </Table.Row>
                     </Table.Header>
                     <Table.Body>

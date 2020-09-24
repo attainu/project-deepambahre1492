@@ -4,14 +4,14 @@ import { List, ListItem } from "@material-ui/core";
 // @material-ui/icons
 import Favorite from "@material-ui/icons/Favorite";
 
-import footImg1 from '../assets/images/footer/footer1.jpg'
-import footImg2 from '../assets/images/footer/footer2.jpg'
-import footImg3 from '../assets/images/footer/footer3.jpg'
-import footImg4 from '../assets/images/footer/footer4.jpg'
-import footImg5 from '../assets/images/footer/footer5.jpg'
-import footImg6 from '../assets/images/footer/footer6.jpg'
-import footImg7 from '../assets/images/footer/footer7.jpg'
-import footImg8 from '../assets/images/footer/footer8.jpg'
+import footImg1 from '../../assets/images/footer/footer1.jpg'
+import footImg2 from '../../assets/images/footer/footer2.jpg'
+import footImg3 from '../../assets/images/footer/footer3.jpg'
+import footImg4 from '../../assets/images/footer/footer4.jpg'
+import footImg5 from '../../assets/images/footer/footer5.jpg'
+import footImg6 from '../../assets/images/footer/footer6.jpg'
+import footImg7 from '../../assets/images/footer/footer7.jpg'
+import footImg8 from '../../assets/images/footer/footer8.jpg'
 
 const Footer = () => {
     return (
@@ -26,9 +26,9 @@ const Footer = () => {
                     </div> 
                     <div className="footer-grid">
                         <h5>Social Feed</h5>
-                        <div class="social"><i class="fab fa-twitter"></i><p className="">How to handle ethical disagreements with your clients.</p></div>
-                        <div class="social"><i class="fab fa-twitter"></i><p className="">The tangible benefits of designing at 1x pixel density.</p></div>
-                        <div class="social"><i class="fab fa-facebook-square"></i><p className="">A collection of 25 stunning sites that you can use for inspiration.</p></div>
+                        <div className="social"><i className="fab fa-twitter"></i><p className="">How to handle ethical disagreements with your clients.</p></div>
+                        <div className="social"><i className="fab fa-twitter"></i><p className="">The tangible benefits of designing at 1x pixel density.</p></div>
+                        <div className="social"><i className="fab fa-facebook-square"></i><p className="">A collection of 25 stunning sites that you can use for inspiration.</p></div>
                     </div> 
                     <div className="footer-grid">
                         <h5>Instagram Feed</h5>
@@ -52,11 +52,11 @@ const Footer = () => {
       for a better web.</p>
         <List className="footer-bottom-right">
           <ListItem className="social-icon">
-            <a href="/#" className="blogger"><i class="fab fa-blogger-b"></i></a>
-            <a href="/#" className="facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="/#" className="github"><i class="fab fa-github-alt"></i></a>
-            <a href="/#" className="google"><i class="fab fa-google"></i></a>
-            <a href="/#" className="linkedin"><i class="fab fa-linkedin-in"></i></a>
+            <a href="/#" className="blogger"><i className="fab fa-blogger-b"></i></a>
+            <a href="/#" className="facebook"><i className="fab fa-facebook-f"></i></a>
+            <a href="/#" className="github"><i className="fab fa-github-alt"></i></a>
+            <a href="/#" className="google"><i className="fab fa-google"></i></a>
+            <a href="/#" className="linkedin"><i className="fab fa-linkedin-in"></i></a>
           </ListItem>
         </List>
         </div>

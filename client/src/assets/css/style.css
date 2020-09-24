@@ -14,7 +14,7 @@ nav {
   background-color: #FFC51B;
   background-color: #e52b34;
   transition: background-color 200ms linear;
-  height: 3.5rem;
+  /*height: 3.5rem;*/
   transition: 0.4s;
 }
 .affix {
@@ -231,15 +231,19 @@ li.MuiListItem-root.MuiListItem-gutters a {
 /*----------Form CSS--------------*/
 .login-form {
   margin-top: 10rem;
+  margin-bottom: 5rem;
 }
 .register-form{
   margin-top: 10rem;
+  margin-bottom: 5rem;
 }
 .cetegories{
   margin-top: 10rem;
+  margin-bottom: 5rem;
 }
 .AddProduct{
   margin-top: 10rem;
+  margin-bottom: 5rem;
 }
 .Cetegories{
   position: relative;
@@ -258,31 +262,6 @@ li.MuiListItem-root.MuiListItem-gutters a {
   top: 14rem;
   color: #fff;
   text-align: center;
-}
-
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-  
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-  
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-  
 }
 
 
@@ -306,13 +285,25 @@ html, body{
   background: url(/static/media/temp_banner.b8875b93.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    height: auto;
 }
 .bannerImg{
   width: 100%;
   height: auto;
   position: relative;
   top: -4rem;
+}
+.ui.form input[type=file] {
+  border: none;
+  border-color: transparent;
+  background: dodgerblue;
+  color: #fff;
+  width: 36%;
+  float: left;
+}
+.file-width{
+  width: 100%;
+  float: right;
 }
 
 /*------------Slider---------------*/
@@ -474,4 +465,39 @@ html, body{
     .slider-content .inner h1 {
       font-size: 32px;
     }
+  }
+  
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  
+}
+
+  @media only screen and (max-width: 767px)
+  {
+.ui.table:not(.unstackable) tbody, .ui.table:not(.unstackable) tr, .ui.table:not(.unstackable) tr > td, .ui.table:not(.unstackable) tr > th {
+    width: 100% !important;
+}
+.ui.table:not(.unstackable) tr {
+  display: flex !important;
+}
   }

@@ -2,13 +2,23 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require("bcryptjs");
 const apiRoutes = require("./routes/apiroutes");
-//const indexRoutes = require("./routes/index");
 const mongoose = require("mongoose");
 const UserModel = require("./models/user");
 const SessionModel = require("./models/session");
 const path = require("path");
 require("dotenv").config();
 let app = express();
+const cors = require("cors");
+
+//Setup CORS Error Handler
+app.use(cors());
+//enable CORS
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Authorization, Origin, X-Requested-With, Content-Type, Accept");
+    res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');  
+    next();
+});
 
 mongoose.connect(
     process.env.MONGODB_URI || 'mongodb+srv://deepambahreShoppy:E-CommerceStore@e-commercestore.bavjy.mongodb.net/E-CommerceStore?retryWrites=true&w=majority',
@@ -104,7 +114,7 @@ app.post("/register",function(req,res){
                 return res.status(409).json({message:"Username already in use"})
             }else {
                 console.log('Register success. Username:'+user.username);
-                return res.status(200).json({message:"Register success!"})
+                return res.status(200).json({message:"Register success!"},user)
             }
         })
     })
@@ -144,6 +154,7 @@ app.post("/login",function(req,res) {
             let token = tokenizer();
             let temp = Date.now();
             let session = new SessionModel({
+                userInfo: user,
                 user: user.username,
                 token:token,
                 ttl: temp+ttl
@@ -185,8 +196,16 @@ app.post("/logout",function(req,res) {
 })
 
 
+app.get("/profile", isUserLogged, async (req, res) => {
+    let user = req.session.userInfo
+    //console.log(username)
+    res.send(user)
+  });
+
+
+
+
 app.use("/api",isUserLogged,apiRoutes);
-//app.use("/",indexRoutes);
 
 
 //Services static assets if in production

@@ -5,9 +5,11 @@ export default class EditRow extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            type: props.item.type,
-            count: props.item.count,
-            price: props.item.price
+            productName: props.item.productName,
+            quantity: props.item.quantity,
+            price: props.item.price,
+            productColor: props.item.productColor,
+            productImage: props.item.productImage
         }
     }
 
@@ -20,9 +22,11 @@ export default class EditRow extends React.Component{
     editItem = (event) => {
         let item ={
             _id: this.props.item._id,
-            type: this.state.type,
-            count: this.state.count,
-            price: this.state.price
+            productName: this.state.productName,
+            quantity: this.state.quantity,
+            price: this.state.price,
+            productColor: this.state.productColor,
+            productImage: this.state.productImage
         }
         this.props.editItem(item);
     }
@@ -35,13 +39,19 @@ export default class EditRow extends React.Component{
         return(
             <Table.Row>
                 <Table.Cell>
-                    <input type='text' name='type' required={true} value={this.state.type} onChange={this.onChange} />
+                    <input type='text' name='productName' required={true} value={this.state.productName} onChange={this.onChange} />
                 </Table.Cell>
                 <Table.Cell>
-                    <input type='number' name='count' required={true} minimum='0' value={this.state.count} onChange={this.onChange} />
+                    <input type='number' name='quantity' required={true} minimum='0' value={this.state.quantity} onChange={this.onChange} />
                 </Table.Cell>
                 <Table.Cell>
                     <input type='number' name='price' required={true} minimum='0' step='0.01' value={this.state.price} onChange={this.onChange} />
+                </Table.Cell>
+                <Table.Cell>
+                    <input type='text' name='productColor' required={true} value={this.state.productColor} onChange={this.onChange} />
+                </Table.Cell>
+                <Table.Cell>
+                    <input type='file' name='productColor' required={true} value={this.state.productImage} onChange={this.onChange} />
                 </Table.Cell>
                 <Table.Cell>
                     <Button color='green' onClick={this.editItem}>Save</Button>

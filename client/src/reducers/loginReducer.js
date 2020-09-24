@@ -29,7 +29,7 @@ const saveToStorage = (state) => {
 const initialState = getInitialState();
 
 const loginReducer = (state=initialState,action) => {
-    console.log('loginReducer, action type: '+action.type);
+    //console.log('loginReducer, action type: '+action.type);
     let tempState = {};
     switch(action.type){
         case FETCH_LOADING:

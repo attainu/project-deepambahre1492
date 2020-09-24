@@ -24,7 +24,7 @@ export const getList = (token,search) => {
 
         let url = "/api/shopping";
         if(search){
-        url += "?type="+search;
+        url += "?productName="+search;
         }
         dispatch(fetchLoading());
         fetch(url,request).then(response => {

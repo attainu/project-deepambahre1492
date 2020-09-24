@@ -1,16 +1,19 @@
 import React from 'react';
 //import logo from './logo.svg';
 import './App.css';
-import ShoppingForm from './components/ShoppingForm';
-import ShoppingList from './components/ShoppingList';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Home from './components/Views/Home';
+import About from './components/Views/About';
+import ShoppingForm from './components/Categories/AddCategories';
+import ShoppingList from './components/Categories/Crud/CategoriesList';
+import Navbar from './components/Layout/Navbar';
+import Footer from './components/Layout/Footer';
 import {Route,Switch,Redirect} from 'react-router-dom';
-import LoginForm from './components/LoginForm';
-import Cetegories from './components/cetegories';
-import SignupForm from './components/SignUpForm';
+import LoginForm from './components/Layout/LoginForm';
+import Categories from './components/Categories/Categories';
+import SignupForm from './components/Layout/SignUpForm';
 import {connect} from 'react-redux';
 import {getList} from './actions/shoppingActions';
+import Profile from './components/Views/Profile';
 import './assets/css/style.css';
 import './assets/js/script.js';
 
@@ -38,27 +41,35 @@ class App extends React.Component {
         <Navbar />
         <hr/>
         <Switch>
-          <Route exact path="/" render={
+        <Route exact path="/" component={Home } />
+        <Route exact path="/about" component={About } />
+          <Route exact path="/login" render={
             () => this.props.isLogged ?
-              (<Redirect to="/cetegories" />):(<LoginForm  />)
+              (<Redirect to="/categories" />):(<LoginForm  />)
           }/>
           <Route exact path="/register" component={SignupForm } />
-          <Route exact path="/cetegories" render= { () =>
+          <Route exact path="/categories" render= { () =>
             this.props.isLogged ?
-             (<Cetegories /> ) :
-             (<Redirect to="/" />)
+             (<Categories /> ) :
+             (<Redirect to="/login" />)
              } 
           />
           <Route exact path="/list" render= { () =>
             this.props.isLogged ?
              (<ShoppingList /> ) :
-             (<Redirect to="/" />)
+             (<Redirect to="/login" />)
              } 
           />
          <Route path="/form" render = { () => 
           this.props.isLogged ?
-            (<ShoppingForm /> ):(<Redirect to="/" />)
+            (<ShoppingForm /> ):(<Redirect to="/login" />)
             }
+          />
+          <Route exact path="/profile" render= { () =>
+            this.props.isLogged ?
+             (<Profile /> ) :
+             (<Redirect to="/login" />)
+             } 
           />
           
         </Switch>

@@ -1,9 +1,11 @@
 const mongoose = require("mongoose");
 
 let Schema = mongoose.Schema({
-    type: String,
-    count: Number,
+    productName: String,
+    quantity: Number,
     price: Number,
+    productColor: String,
+    productImage:String,
     user:{type:String,indexed:true}
 })
 

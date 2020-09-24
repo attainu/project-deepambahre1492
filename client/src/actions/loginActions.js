@@ -1,5 +1,4 @@
 import {removeState,getList} from './shoppingActions';
-
 //Actions constants
 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -14,7 +13,7 @@ export const LOADING_DONE = "LOADING_DONE";
 //ACTIONS
 
 export const register = (user) => {
-    console.log('register action')
+    //console.log('register action')
     return dispatch => {
         let request = {
         method: "POST",
@@ -66,6 +65,7 @@ export const login = (user) => {
     }
 }
 
+
 export const logout = (token) => {
     return dispatch => {
         let request = {
@@ -89,6 +89,7 @@ export const logout = (token) => {
 
 
 //ACTION CREATORS
+
 
 export const fetchLoading = () => {
     return {
@@ -141,5 +142,4 @@ export const logoutSuccess = () => {
         type: LOGOUT_SUCCESS
     }
 }
-
 

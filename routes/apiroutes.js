@@ -1,7 +1,18 @@
 let express = require("express");
-let mongoose = require("mongoose");
-let ShoppingItem = require("../models/shoppingitem");
-const { compareSync } = require("bcryptjs");
+let ShoppingItem = require("../models/product");
+const upload  = require('../middleware/upload');
+const app = express();
+var fileupload = require('express-fileupload');
+var  cloudinary = require('cloudinary').v2;
+const dotenv = require("dotenv");
+app.use(fileupload({useTempFiles:true}));
+dotenv.config();
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 let router = express.Router();
 
@@ -17,14 +28,14 @@ let id = 100;
 
 router.get('/shopping',function(req,res){
     let query = {"user":req.session.user};
-    if(req.query.type){
+    if(req.query.productName){
         query = {
             "user":req.session.user,
-            "type":req.query.type
+            "productName":req.query.productName
         }
     }
 
-    ShoppingItem.find(query,{"type":1,"count":1,"price":1}, function(err,items){
+    ShoppingItem.find(query,{"productName":1,"quantity":1,"price":1,"productColor":1,"productImage":1}, function(err,items){
         if(err){
             return res.status(200).json([])
         }
@@ -35,13 +46,31 @@ router.get('/shopping',function(req,res){
     })
 });
 
-router.post('/shopping',function(req,res){
+router.post('/shopping', upload.single('productImage'), function(req,res){
     let item =new ShoppingItem( {
         user: req.session.user,
-        type: req.body.type,
-        count: req.body.count,
-        price: req.body.price
+        productName: req.body.productName,
+        quantity: req.body.quantity,
+        price: req.body.price,
+        productColor: req.body.productColor
     })
+
+    if(req.file){
+        //save images in cloud 
+    cloudinary.uploader.upload(req.file.path,function(err,result){    //save images in cloud 
+        console.log(result)
+     
+        item.productImage=result.url;
+         console.log(item.productImage);
+         item.save()
+     .then(()=>res.json('Product image Added!'))
+      .catch(err=>res.status(400).json("Error:"+err));
+        })
+     }
+     console.log(item);
+
+
+/*
     item.save(function(err,item) {
         if(err){
             console.log("Error in saving shoppingitem: "+err)
@@ -50,8 +79,9 @@ router.post('/shopping',function(req,res){
         if(!item){
             return res.status(409).json({message:"Not saved"})
         }
+        console.log(item);
         return res.status(200).json({message:"success"})
-    })
+    })*/
 
 });
 
@@ -92,9 +122,10 @@ router.put('/shopping/:id',function(req,res){
         if(item.user === req.session.user) {
             ShoppingItem.replaceOne({"_id":item._id},{
                 user:   req.session.user,
-                type:   req.body.type,
-                count:  req.body.count,
-                price:  req.body.price
+                productName:   req.body.productName,
+                quantity:  req.body.quantity,
+                price:  req.body.price,
+                productColor: req.body.productColor
             }, function(err){
                 if(err){
                     console.log('Failed to edit item: '+err)
@@ -110,3 +141,4 @@ router.put('/shopping/:id',function(req,res){
 });
 
 module.exports = router;
+

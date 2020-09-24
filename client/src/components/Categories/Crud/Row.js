@@ -15,9 +15,11 @@ export default class Row extends React.Component{
     render(){
         return(
             <Table.Row>
-                <Table.Cell>{this.props.item.type}</Table.Cell>
-                <Table.Cell>{this.props.item.count}</Table.Cell>
+                <Table.Cell>{this.props.item.productName}</Table.Cell>
+                <Table.Cell>{this.props.item.quantity}</Table.Cell>
                 <Table.Cell>{this.props.item.price}</Table.Cell>
+                <Table.Cell>{this.props.item.productColor}</Table.Cell>
+                <Table.Cell>{this.props.item.productImage}</Table.Cell>
                 <Table.Cell><Button
                     name={this.props.item._id}
                     onClick={this.changeToRemoveMode}
