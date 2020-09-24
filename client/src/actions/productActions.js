@@ -2,8 +2,8 @@ import {fetchLoading,loadingDone,logoutSuccess} from './loginActions';
 
 //ACTION CONSTANTS
 
-export const GET_SHOPPINGLIST_SUCCESS = "GET_SHOPPINGLIST_SUCCESS";
-export const GET_SHOPPINGLIST_FAILED = "GET_SHOPPINGLIST_FAILED";
+export const GET_PRODUCTLIST_SUCCESS = "GET_PRODUCTLIST_SUCCESS";
+export const GET_PRODUCTLIST_FAILED = "GET_PRODUCTLIST_FAILED";
 export const ADD_TO_LIST_SUCCESS = "ADD_TO_LIST_SUCCESS";
 export const ADD_TO_LIST_FAILED = "ADD_TO_LIST_FAILED";
 export const REMOVE_FROM_LIST_SUCCESS = "REMOVE_FROM_LIST_SUCCESS";
@@ -22,7 +22,7 @@ export const getList = (token,search) => {
         headers: {"Content-type":"application/json",token:token}
         }
 
-        let url = "/api/shopping";
+        let url = "/api/product";
         if(search){
         url += "?productName="+search;
         }
@@ -47,16 +47,16 @@ export const getList = (token,search) => {
     }
 }
 
-export const addToList = (token,shoppingitem) => {
+export const addToList = (token,productitem) => {
     return dispatch => {
         let request = {
         method: "POST",
         mode: "cors",
         headers: {"Content-type":"application/json",token:token},
-        body: JSON.stringify(shoppingitem)
+        body: JSON.stringify(productitem)
         }
         dispatch(fetchLoading());
-        fetch("api/shopping",request).then(response => {
+        fetch("api/product",request).then(response => {
             dispatch(loadingDone());
             if(response.ok){
                 dispatch(addToListSuccess());
@@ -84,7 +84,7 @@ export const removeFromList = (token,id) =>{
         headers: {"Content-type":"application/json",token:token}
         }
         dispatch(fetchLoading());
-        fetch("api/shopping/"+id,request).then(response => {
+        fetch("api/product/"+id,request).then(response => {
             dispatch(loadingDone());
             if(response.ok){
                 dispatch(removeFromListSuccess());
@@ -113,7 +113,7 @@ export const editItem = (token,item) => {
         body: JSON.stringify(item)
         }
         dispatch(fetchLoading());
-        fetch("api/shopping/"+item._id,request).then(response => {
+        fetch("api/product/"+item._id,request).then(response => {
             if(response.ok){
                 dispatch(loadingDone());
                 dispatch(editItemSuccess());
@@ -139,14 +139,14 @@ export const editItem = (token,item) => {
 
 const getListSuccess = (data) => {
     return {
-        type: GET_SHOPPINGLIST_SUCCESS,
+        type: GET_PRODUCTLIST_SUCCESS,
         list: data
     }
 }
 
 const getListFailed = (error) => {
     return {
-        type: GET_SHOPPINGLIST_FAILED,
+        type: GET_PRODUCTLIST_FAILED,
         error: error
     }
 }

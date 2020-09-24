@@ -8,11 +8,11 @@ import {Provider} from 'react-redux';
 import {createStore,applyMiddleware,combineReducers} from 'redux';
 import thunk from 'redux-thunk';
 import loginReducer from './reducers/loginReducer';
-import shoppingReducer from './reducers/shoppingReducer';
+import productReducer from './reducers/productReducer';
 
 const rootReducer = combineReducers({
   login: loginReducer,
-  shopping: shoppingReducer
+  product: productReducer
 })
 
 const store = createStore(rootReducer,applyMiddleware(thunk));

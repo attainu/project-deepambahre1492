@@ -1,9 +1,9 @@
 import React from 'react';
 import {Form,Button} from 'semantic-ui-react';
 import {connect} from 'react-redux';
-import {addToList} from '../../actions/shoppingActions';
+import {addToList} from '../../actions/productActions';
 
-class ShoppingForm extends React.Component{
+class productForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -115,4 +115,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(ShoppingForm);
+export default connect(mapStateToProps)(productForm);

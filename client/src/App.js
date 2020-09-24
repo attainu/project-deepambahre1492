@@ -3,8 +3,8 @@ import React from 'react';
 import './App.css';
 import Home from './components/Views/Home';
 import About from './components/Views/About';
-import ShoppingForm from './components/Categories/AddCategories';
-import ShoppingList from './components/Categories/Crud/CategoriesList';
+import productForm from './components/Categories/AddCategories';
+import productList from './components/Categories/Crud/CategoriesList';
 import Navbar from './components/Layout/Navbar';
 import Footer from './components/Layout/Footer';
 import {Route,Switch,Redirect} from 'react-router-dom';
@@ -12,7 +12,7 @@ import LoginForm from './components/Layout/LoginForm';
 import Categories from './components/Categories/Categories';
 import SignupForm from './components/Layout/SignUpForm';
 import {connect} from 'react-redux';
-import {getList} from './actions/shoppingActions';
+import {getList} from './actions/productActions';
 import Profile from './components/Views/Profile';
 import './assets/css/style.css';
 import './assets/js/script.js';
@@ -23,7 +23,7 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      shoppinglist: []
+      productlist: []
     }
   }
   */
@@ -56,13 +56,13 @@ class App extends React.Component {
           />
           <Route exact path="/list" render= { () =>
             this.props.isLogged ?
-             (<ShoppingList /> ) :
+             (<productList /> ) :
              (<Redirect to="/login" />)
              } 
           />
          <Route path="/form" render = { () => 
           this.props.isLogged ?
-            (<ShoppingForm /> ):(<Redirect to="/login" />)
+            (<productForm /> ):(<Redirect to="/login" />)
             }
           />
           <Route exact path="/profile" render= { () =>

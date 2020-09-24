@@ -1,11 +1,12 @@
-let express = require("express");
-let ShoppingItem = require("../models/product");
-const upload  = require('../middleware/upload');
+
+const express = require("express");
 const app = express();
-var fileupload = require('express-fileupload');
-var  cloudinary = require('cloudinary').v2;
+const Product = require("../models/product");
+const fileupload = require('express-fileupload');
+const  cloudinary = require('cloudinary').v2;
 const dotenv = require("dotenv");
 app.use(fileupload({useTempFiles:true}));
+
 dotenv.config();
 
 cloudinary.config({
@@ -14,19 +15,10 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-let router = express.Router();
-
-//Dummy DB
-
-let database = [];
-let id = 100;
 
 
-
-
-//Shopping REST API
-
-router.get('/shopping',function(req,res){
+// Handles Get Product
+const getProduct= (req, res, next) => {
     let query = {"user":req.session.user};
     if(req.query.productName){
         query = {
@@ -35,7 +27,7 @@ router.get('/shopping',function(req,res){
         }
     }
 
-    ShoppingItem.find(query,{"productName":1,"quantity":1,"price":1,"productColor":1,"productImage":1}, function(err,items){
+    Product.find(query,{"productName":1,"quantity":1,"price":1,"productColor":1,"productImage":1}, function(err,items){
         if(err){
             return res.status(200).json([])
         }
@@ -44,10 +36,11 @@ router.get('/shopping',function(req,res){
         }
         return res.status(200).json(items)
     })
-});
+}
 
-router.post('/shopping', upload.single('productImage'), function(req,res){
-    let item =new ShoppingItem( {
+// Handles Add Product
+const addProduct= (req, res, next) => {
+    let item =new Product( {
         user: req.session.user,
         productName: req.body.productName,
         quantity: req.body.quantity,
@@ -68,35 +61,21 @@ router.post('/shopping', upload.single('productImage'), function(req,res){
         })
      }
      console.log(item);
+}
 
-
-/*
-    item.save(function(err,item) {
-        if(err){
-            console.log("Error in saving shoppingitem: "+err)
-            return res.status(409).json({message:"Not saved"})
-        }
-        if(!item){
-            return res.status(409).json({message:"Not saved"})
-        }
-        console.log(item);
-        return res.status(200).json({message:"success"})
-    })*/
-
-});
-
-router.delete('/shopping/:id',function(req,res){
+// Handles Product Delete
+const deleteProduct= (req, res, next) => {
     let id = req.params.id;
-    ShoppingItem.findById(id,function(err,item){
+    Product.findById(id,function(err,item){
         if(err) {
-            console.log("Error in removing shoppingitem: "+err)
+            console.log("Error in removing Product: "+err)
             return res.status(404).json({message:"not found"})
         }
         if(!item) {
             return res.status(404).json({message:"not found"})
         }
         if(item.user === req.session.user) {
-            ShoppingItem.deleteOne({"_id":item._id},function(err){
+            Product.deleteOne({"_id":item._id},function(err){
                 if(err){
                     console.log('Failed to remove item: '+err)
                     return res.status(409).json({message:"conflict"})
@@ -107,20 +86,21 @@ router.delete('/shopping/:id',function(req,res){
             return res.status(409).json({message:"conflict"})
         }
     })
-});
+}
 
-router.put('/shopping/:id',function(req,res){
+// Handles Product Update
+const updateProduct= (req, res, next) => {
     let id = req.params.id;
-    ShoppingItem.findById(id,function(err,item){
+    Product.findById(id,function(err,item){
         if(err) {
-            console.log("Error in editing shoppingitem: "+err)
+            console.log("Error in editing Product: "+err)
             return res.status(404).json({message:"not found"})
         }
         if(!item) {
             return res.status(404).json({message:"not found"})
         }
         if(item.user === req.session.user) {
-            ShoppingItem.replaceOne({"_id":item._id},{
+            Product.replaceOne({"_id":item._id},{
                 user:   req.session.user,
                 productName:   req.body.productName,
                 quantity:  req.body.quantity,
@@ -137,8 +117,6 @@ router.put('/shopping/:id',function(req,res){
             return res.status(409).json({message:"conflict"})
         }
     })
-    
-});
+}
 
-module.exports = router;
-
+module.exports = { getProduct, addProduct, deleteProduct, updateProduct};

@@ -4,9 +4,9 @@ import Row from './Row';
 import RemoveRow from './RemoveRow';
 import EditRow from './EditRow';
 import {connect} from 'react-redux';
-import {getList,removeFromList,editItem} from '../../../actions/shoppingActions';
+import {getList,removeFromList,editItem} from '../../../actions/productActions';
 
-class ShoppingList extends React.Component{
+class productList extends React.Component{
 
     constructor(props){
         super(props);
@@ -31,8 +31,8 @@ class ShoppingList extends React.Component{
     }
 
     changeToRemoveMode = (id) => {
-        for(let ii=0; ii < this.props.shoppinglist.length;ii++){
-            if(id === this.props.shoppinglist[ii]._id){
+        for(let ii=0; ii < this.props.productlist.length;ii++){
+            if(id === this.props.productlist[ii]._id){
                 this.setState({
                     removeIndex: ii,
                     editIndex: -1
@@ -42,8 +42,8 @@ class ShoppingList extends React.Component{
     }
 
     changeToEditMode = (id) => {
-        for(let ii=0; ii < this.props.shoppinglist.length;ii++){
-            if(id === this.props.shoppinglist[ii]._id){
+        for(let ii=0; ii < this.props.productlist.length;ii++){
+            if(id === this.props.productlist[ii]._id){
                 this.setState({
                     removeIndex: -1,
                     editIndex: ii
@@ -71,7 +71,7 @@ class ShoppingList extends React.Component{
 
     // key is mandatory and must be unique!!!!
     render(){
-        let items = this.props.shoppinglist.map((item,index) =>{
+        let items = this.props.productlist.map((item,index) =>{
             if(this.state.removeIndex===index) {
                 return <RemoveRow key= {item._id} item={item} 
                 removeFromList={this.removeFromList} 
@@ -129,8 +129,8 @@ class ShoppingList extends React.Component{
 const mapStateToProps = (state) => {
     return {
         token: state.login.token,
-        shoppinglist: state.shopping.list
+        productlist: state.product.list
     }
 }
 
-export default connect(mapStateToProps)(ShoppingList);
+export default connect(mapStateToProps)(productList);

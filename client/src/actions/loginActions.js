@@ -1,4 +1,4 @@
-import {removeState,getList} from './shoppingActions';
+import {removeState,getList} from './productActions';
 //Actions constants
 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";

@@ -1,10 +1,10 @@
 import React from 'react';
-import {Table, Button} from 'semantic-ui-react';
+import {Button} from 'semantic-ui-react';
 import Row from './CategoriesRow';
 import {connect} from 'react-redux';
-import {getList} from '../../actions/shoppingActions';
+import {getList} from '../../actions/productActions';
 
-class ShoppingList extends React.Component{
+class productList extends React.Component{
 
     constructor(props){
         super(props);
@@ -30,7 +30,7 @@ class ShoppingList extends React.Component{
     // key is mandatory and must be unique!!!!
     render(){
 
-        let items = this.props.shoppinglist.map((item) =>{
+        let items = this.props.productlist.map((item) =>{
 
             return <Row key= {item._id} item={item} />
             }
@@ -39,26 +39,21 @@ class ShoppingList extends React.Component{
             <div className="page backgroundAddImage">
       <div className="container">
         <div className="row justify">
-          <div className="col-md-10 col-md-offset-1">
+          <div className="col-md-12">
             <div className="AddProduct form-inline">
+                <div className="searchProduct">
                 <label htmlFor="search">Search by type:</label>
                 <input type="text" className="form-control" name = "search" onChange = {this.onChange}
                     value = {this.state.search} />
                 <Button style={{marginLeft:10}} onClick={this.searchByType}>Search</Button>
-                <Table celled>
-                    <Table.Header>
-                        <Table.Row>
-                            <Table.HeaderCell>product Name</Table.HeaderCell>
-                            <Table.HeaderCell>quantity</Table.HeaderCell>
-                            <Table.HeaderCell>Price</Table.HeaderCell>
-                            <Table.HeaderCell>Product Color</Table.HeaderCell>
-                            <Table.HeaderCell>product Image</Table.HeaderCell>
-                        </Table.Row>
-                    </Table.Header>
-                    <Table.Body>
-                        {items}
-                    </Table.Body>
-                </Table>
+                </div>
+                <div className="row">
+                <div>
+                    <div className="product-view">
+                       {items}
+                    </div>
+                </div>
+                </div>
             </div>
             </div>
             </div>
@@ -71,8 +66,8 @@ class ShoppingList extends React.Component{
 const mapStateToProps = (state) => {
     return {
         token: state.login.token,
-        shoppinglist: state.shopping.list
+        productlist: state.product.list
     }
 }
 
-export default connect(mapStateToProps)(ShoppingList);
+export default connect(mapStateToProps)(productList);

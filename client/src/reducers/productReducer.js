@@ -1,6 +1,6 @@
 import{
-    GET_SHOPPINGLIST_SUCCESS,
-    GET_SHOPPINGLIST_FAILED,
+    GET_PRODUCTLIST_SUCCESS,
+    GET_PRODUCTLIST_FAILED,
     ADD_TO_LIST_SUCCESS,
     ADD_TO_LIST_FAILED,
     REMOVE_FROM_LIST_SUCCESS,
@@ -8,11 +8,11 @@ import{
     EDIT_ITEM_SUCCESS,
     EDIT_ITEM_FAILED,
     REMOVE_STATE
-} from '../actions/shoppingActions';
+} from '../actions/productActions';
 
 const getInitialState = () => {
-    if(sessionStorage.getItem("shoppingstate")){
-        return JSON.parse(sessionStorage.getItem("shoppingstate"))
+    if(sessionStorage.getItem("productstate")){
+        return JSON.parse(sessionStorage.getItem("productstate"))
     } else {
         return {
             list: [],
@@ -22,23 +22,23 @@ const getInitialState = () => {
 }
 
 const saveToStorage = (state) => {
-    sessionStorage.setItem('shoppingstate',JSON.stringify(state));
+    sessionStorage.setItem('productstate',JSON.stringify(state));
 }
 
 const initialState = getInitialState();
 
-const shoppingReducer = (state=initialState,action) => {
-    //console.log('shoppingReducer, action type: '+action.type);
+const productReducer = (state=initialState,action) => {
+    //console.log('productReducer, action type: '+action.type);
     let tempState = {};
     switch(action.type) {
-        case GET_SHOPPINGLIST_SUCCESS:
+        case GET_PRODUCTLIST_SUCCESS:
             tempState = {
                 list:action.list,
                 error:''
             }
             saveToStorage(tempState);
         return tempState
-        case GET_SHOPPINGLIST_FAILED:
+        case GET_PRODUCTLIST_FAILED:
             tempState = {
                 ...state,
                 error:action.error
@@ -100,4 +100,4 @@ const shoppingReducer = (state=initialState,action) => {
     }
 }
 
-export default shoppingReducer;
+export default productReducer;
