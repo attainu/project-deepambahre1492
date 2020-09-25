@@ -7,27 +7,21 @@ export default class Row extends React.Component{
         return(
 
              <Grid>
-             <Grid.Row>
+             <Grid.Row className="margin-zero">
                <Grid.Column width={4}>
                  <Image src={this.props.item.productImage} className="img-fluid" alt="" />
-                 <p>{this.props.item.productName}</p>
-                 <p>{this.props.item.quantity}</p>
-                 <p>{this.props.item.price}</p>
-                 <p>{this.props.item.productColor}</p>
+                 <h6 className="ProductName">{this.props.item.productName}</h6>
+                 <p className="price">Price: &nbsp;{this.props.item.price}</p>
                </Grid.Column>
                <Grid.Column width={4}>
                <Image src={this.props.item.productImage} className="img-fluid" alt="" />
-                 <p>{this.props.item.productName}</p>
-                 <p>{this.props.item.quantity}</p>
-                 <p>{this.props.item.price}</p>
-                 <p>{this.props.item.productColor}</p>
+                 <h6 className="ProductName">{this.props.item.productName}</h6>
+                 <p className="price">Price: &nbsp; {this.props.item.price}</p>
                </Grid.Column>
                <Grid.Column width={4}>
                <Image src={this.props.item.productImage} className="img-fluid" alt="" />
-                 <p>{this.props.item.productName}</p>
-                 <p>{this.props.item.quantity}</p>
-                 <p>{this.props.item.price}</p>
-                 <p>{this.props.item.productColor}</p>
+                 <h6 className="ProductName">{this.props.item.productName}</h6>
+                 <p className="price">Price: &nbsp; {this.props.item.price}</p>
                </Grid.Column>
              </Grid.Row>
              </Grid>

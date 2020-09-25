@@ -23,8 +23,10 @@ export default class Row extends React.Component{
                 <Table.Cell><Button
                     name={this.props.item._id}
                     onClick={this.changeToRemoveMode}
+                    className="btn-danger"
                 >Remove</Button></Table.Cell>
                 <Table.Cell><Button
+                className="btn-success"
                 name={this.props.item._id}
                 onClick={this.changeToEditMode}
                 >Edit</Button></Table.Cell>

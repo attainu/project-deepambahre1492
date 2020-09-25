@@ -49,7 +49,7 @@ class LoginForm extends React.Component {
                 <Form.Field className="form-group">
                     <input type = 'password' className="form-control" placeholder="Password" onChange={this.onChange} name = 'password' value={this.state.password} />
                 </Form.Field>
-                <Button onClick={this.onSubmit} name='login'>Login</Button>
+                <Button onClick={this.onSubmit} className="btn-ecommarce" name='login'>Login</Button>
             </Form>
             </div>
             </div>

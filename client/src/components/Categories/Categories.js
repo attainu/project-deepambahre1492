@@ -42,17 +42,14 @@ class productList extends React.Component{
           <div className="col-md-12">
             <div className="AddProduct form-inline">
                 <div className="searchProduct">
-                <label htmlFor="search">Search by type:</label>
-                <input type="text" className="form-control" name = "search" onChange = {this.onChange}
+                <input type="text" className="form-control searchbar-width" placeholder="Search by Product Name" name = "search" onChange = {this.onChange}
                     value = {this.state.search} />
-                <Button style={{marginLeft:10}} onClick={this.searchByType}>Search</Button>
+                <Button className="btn-ecommarce" style={{marginLeft:10}} onClick={this.searchByType}>Search</Button>
                 </div>
                 <div className="row">
-                <div>
                     <div className="product-view">
                        {items}
                     </div>
-                </div>
                 </div>
             </div>
             </div>

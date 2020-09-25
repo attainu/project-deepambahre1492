@@ -91,7 +91,7 @@ button:focus {
   background-color: transparent;
 }
 .navbar-space-top {
-    padding: 0.8rem 1rem;
+    padding: 0rem 1rem;
     line-height: 0;
     background-color: #e52b34;
 }
@@ -103,6 +103,36 @@ nav ul li:hover {
 nav ul a:hover {
   color:#fff;
 }
+.btn-ecommarce{
+  background-color:#e52b34 !important;
+  color:#fff !important;
+}
+.form h2 {
+  margin-bottom: 2rem;
+}
+.btn-success{
+  color: #fff !important;
+  background-color: #28a745 !important;
+  border-color: #28a745 !important;
+}
+.btn-danger{
+  color: #fff !important;
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+}
+.four.wide.column {
+  box-shadow: 1px 1px 5px 0px #ccc;
+  margin: 0rem 1rem;
+  transition: all .1s ease-in-out;
+}
+.four.wide.column:hover {
+  transform: scale(1.1);
+  z-index: 9999999999999999;
+}
+.four.wide.column img {
+  display: inline-flex;
+}
+
 /*-----------------------------------------Footer------------------------------------------*/
 .footer{
   padding: 3rem 0;
@@ -240,7 +270,7 @@ li.MuiListItem-root.MuiListItem-gutters a {
   margin-bottom: 5rem;
 }
 .AddProduct{
-  margin-top: 10rem;
+  margin-top: 8rem;
   margin-bottom: 5rem;
 }
 .Cetegories{
@@ -261,7 +291,9 @@ li.MuiListItem-root.MuiListItem-gutters a {
   color: #fff;
   text-align: center;
 }
-
+.margin-zero{
+  margin: 0;
+}
 
 /*----------------------------------------General--------------------------------------------------*/
 html, body{
@@ -309,7 +341,26 @@ th {
 td {
   line-height: 1.6rem;
 }
-
+.ui.grid {
+  justify-content: center;
+}
+.searchProduct {
+  width: 100%;
+    margin-bottom: 8rem;
+    display: flex;
+    justify-content: center;
+}
+.searchbar-width {
+  width: 60% !important;
+}
+.price {
+  margin-bottom: 1rem !important;
+}
+.ProductName {
+  margin-top: 0.5rem;
+  margin-top: 0.5rem;
+    padding: 0rem 0rem;
+}
 /*------------Slider---------------*/
 
   .slider-wrapper {

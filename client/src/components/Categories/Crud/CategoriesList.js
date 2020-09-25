@@ -96,10 +96,9 @@ class productList extends React.Component{
           <div className="col-md-10 col-md-offset-1">
             <div className="AddProduct form-inline">
                 <div className="form-inline">
-                <label htmlFor="search">Search by type:</label>
-                <input type="text" name = "search" onChange = {this.onChange}
+                <input type="text" name = "search" placeholder="Search by Product Name" onChange = {this.onChange}
                     value = {this.state.search} />
-                <Button style={{marginLeft:10}} onClick={this.searchByType}>Search</Button>
+                <Button style={{marginLeft:10}} className="btn-ecommarce" onClick={this.searchByType}>Search</Button>
                 </div>
                 <Table celled>
                     <Table.Header>
