@@ -3,7 +3,7 @@ import {Button} from 'semantic-ui-react';
 import Row from './CategoriesRow';
 import {connect} from 'react-redux';
 import {getList} from '../../actions/productActions';
-
+import { Card, Pagination } from 'semantic-ui-react';
 class productList extends React.Component{
 
     constructor(props){
@@ -48,7 +48,9 @@ class productList extends React.Component{
                 </div>
                 <div className="row">
                     <div className="product-view">
-                       {items}
+                       <Card.Group>{items}</Card.Group>
+                       
+                       <Pagination defaultActivePage={1} totalPages={10} />
                     </div>
                 </div>
             </div>

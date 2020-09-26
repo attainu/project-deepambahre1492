@@ -120,17 +120,15 @@ nav ul a:hover {
   background-color: #dc3545 !important;
   border-color: #dc3545 !important;
 }
-.four.wide.column {
-  box-shadow: 1px 1px 5px 0px #ccc;
-  margin: 0rem 1rem;
-  transition: all .1s ease-in-out;
+.ui.cards {
+  justify-content: center;
 }
-.four.wide.column:hover {
-  transform: scale(1.1);
-  z-index: 9999999999999999;
+.card-header {
+  min-height: 350px;
 }
-.four.wide.column img {
-  display: inline-flex;
+.card-header {
+  background-color: transparent;
+  border-bottom: 0px solid rgba(0,0,0,.125);
 }
 
 /*-----------------------------------------Footer------------------------------------------*/
@@ -360,6 +358,13 @@ td {
   margin-top: 0.5rem;
   margin-top: 0.5rem;
     padding: 0rem 0rem;
+}
+.ui.pagination.menu {
+  margin-top: 2rem;
+}
+.ui.pagination.menu .active.item {
+  background: #e52b34;
+  color: #fff;
 }
 /*------------Slider---------------*/
 
