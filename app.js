@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const userRoute = require("./routes/user")
 const productRoute = require("./routes/product")
 //const cartRoute = require("./routes/cart")
+const contactRoute = require("./routes/contact")
 const auth = require("./middleware/auth");
 const path = require("path");
 require("./config/database");
@@ -24,9 +25,9 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 
 app.use("/",userRoute);
+app.use("/api",contactRoute);
 app.use("/api",auth.isUserLogged,productRoute);
 //app.use("/api", auth.isUserLogged,cartRoute);
-
 //Services static assets if in production
 if (process.env.NODE_ENV === 'production') {
     //set static folder

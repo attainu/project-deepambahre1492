@@ -14,6 +14,7 @@ import SignupForm from './components/Layout/SignUpForm';
 import {connect} from 'react-redux';
 import {getList} from './actions/productActions';
 import Profile from './components/Views/Profile';
+import Contact from './components/Views/Contact';
 import './assets/css/style.css';
 import './assets/js/script.js';
 
@@ -71,7 +72,7 @@ class App extends React.Component {
              (<Redirect to="/login" />)
              } 
           />
-          
+          <Route exact path="/#ContactUs" component={Contact } />
         </Switch>
         <Footer />
       </div>

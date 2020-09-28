@@ -1,6 +1,7 @@
 import React from "react";
 import InfiniteCarousel from 'react-leaf-carousel';
 import HomeCarousel from '../Carousel/Carousel';
+import Contact from './Contact';
 export default function Home() {
 
   return (
@@ -69,6 +70,7 @@ export default function Home() {
       />
     </div>
   </InfiniteCarousel>
+  <Contact />
     </div>
   );
 }
