@@ -27,7 +27,7 @@ const getProduct= (req, res, next) => {
         }
     }
 
-    Product.find(query,{"productName":1,"quantity":1,"price":1,"productColor":1,"productImage":1}, function(err,items){
+    Product.find(query,{"productName":1,"quantity":1,"price":1,"productColor":1,"productImage":1}, (err,items)  => {
         if(err){
             return res.status(200).json([])
         }
@@ -50,7 +50,7 @@ const addProduct= (req, res, next) => {
 
     if(req.file){
         //save images in cloud 
-    cloudinary.uploader.upload(req.file.path,function(err,result){    //save images in cloud 
+    cloudinary.uploader.upload(req.file.path,(err,result) => {    //save images in cloud 
         console.log(result)
      
         item.productImage=result.url;
@@ -75,7 +75,7 @@ const deleteProduct= (req, res, next) => {
             return res.status(404).json({message:"not found"})
         }
         if(item.user === req.session.user) {
-            Product.deleteOne({"_id":item._id},function(err){
+            Product.deleteOne({"_id":item._id},(err) => {
                 if(err){
                     console.log('Failed to remove item: '+err)
                     return res.status(409).json({message:"conflict"})
@@ -106,7 +106,7 @@ const updateProduct= (req, res, next) => {
                 quantity:  req.body.quantity,
                 price:  req.body.price,
                 productColor: req.body.productColor
-            }, function(err){
+            }, (err) => {
                 if(err){
                     console.log('Failed to edit item: '+err)
                     return res.status(409).json({message:"conflict"})
