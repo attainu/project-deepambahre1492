@@ -17,6 +17,7 @@ import Profile from './components/Views/Profile';
 import Contact from './components/Views/Contact';
 import './assets/css/style.css';
 import './assets/js/script.js';
+import ScrollTop from './components/scrollTop';
 
 class App extends React.Component {
 
@@ -74,6 +75,7 @@ class App extends React.Component {
           />
           <Route exact path="/#ContactUs" component={Contact } />
         </Switch>
+        <ScrollTop />
         <Footer />
       </div>
     );

@@ -2,23 +2,25 @@ import React from 'react';
 import {Form,Button} from 'semantic-ui-react';
 import {connect} from 'react-redux';
 import {addToList} from '../../actions/productActions';
-
+//import uploads from '../../../../uploads';
 class productForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             productName: '',
-            quantity: undefined,
-            price: undefined,
+            quantity: '',
+            price: '',
             productColor: '',
             productImage: ''
         }
     }
 
+
     onChange = (event) => {
-        let state = {};
-        state[event.target.name] = event.target.value;
-        this.setState(state);
+        this.setState({ [event.target.name]: event.target.value });
+    }
+    onImageChange = (event) => {
+        this.setState({ productImage: event.target.files[0] });
     }
 
     onSubmit = (event) => {
@@ -29,7 +31,8 @@ class productForm extends React.Component{
             price: this.state.price,
             productColor: this.state.productColor,
             productImage: this.state.productImage
-        }
+        };
+
         this.props.dispatch(addToList(this.props.token,item));
         this.setState({
             productName: '',
@@ -44,7 +47,7 @@ class productForm extends React.Component{
 
     render(){
         return(
-            <div className="page backgroundAddImage">
+            <div className="page">
       <div className="container">
         <div className="row justify">
           <div className="col-md-10 col-md-offset-1">
@@ -93,8 +96,7 @@ class productForm extends React.Component{
                     <input type='file'
                         name='productImage'
                         className="productImage"
-                        onChange={this.onChange}
-                        value={this.state.productImage} 
+                        onChange={this.onImageChange}
                     />
                 </Form.Field>
                 

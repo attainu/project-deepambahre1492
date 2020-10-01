@@ -38,7 +38,7 @@ class LoginForm extends React.Component {
 
     render(){
         return (
-            <div className="page backgroundAddImage">
+            <div className="page">
       <div className="container">
         <div className="row justify">
           <div className="col-md-8 col-md-offset-2">

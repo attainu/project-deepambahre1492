@@ -36,7 +36,7 @@ class productList extends React.Component{
             }
         )
         return(
-            <div className="page backgroundAddImage">
+            <div className="page">
       <div className="container">
         <div className="row justify">
           <div className="col-md-12">

@@ -2,11 +2,13 @@ import React from "react";
 import InfiniteCarousel from 'react-leaf-carousel';
 import HomeCarousel from '../Carousel/Carousel';
 import Contact from './Contact';
+import About from './About';
 export default function Home() {
 
   return (
     <div className="page">
       <HomeCarousel />
+      <About />
       <InfiniteCarousel
     breakpoints={[
       {
@@ -32,7 +34,31 @@ export default function Home() {
     slidesToShow={4}
     scrollOnDevice={true}
     autoCycle={true}
-  >
+  > 
+    <div>
+      <img
+        alt=''
+        src='https://res.cloudinary.com/dts4wxk4i/image/upload/v1601265619/shopping/casual-shirts_zhifye.jpg'
+      />
+    </div>
+    <div>
+      <img
+        alt=''
+        src='https://res.cloudinary.com/dts4wxk4i/image/upload/v1601356192/shopping/fashion1_fesjas.jpg'
+      />
+    </div>
+    <div>
+      <img
+        alt=''
+        src='https://res.cloudinary.com/dts4wxk4i/image/upload/v1601356192/shopping/fashion2_i54q08.jpg'
+      />
+    </div>
+    <div>
+      <img
+        alt=''
+        src='https://res.cloudinary.com/dts4wxk4i/image/upload/v1601265619/shopping/woman_jeans_afyrsj.jpg'
+      />
+    </div>
     <div>
       <img
         alt=''
@@ -48,12 +74,6 @@ export default function Home() {
     <div>
       <img
         alt=''
-        src='https://res.cloudinary.com/dts4wxk4i/image/upload/v1601265619/shopping/woman_jeans_afyrsj.jpg'
-      />
-    </div>
-    <div>
-      <img
-        alt=''
         src='https://res.cloudinary.com/dts4wxk4i/image/upload/v1601265619/shopping/leather-jacket_jr38dw.jpg'
       />
     </div>
@@ -63,12 +83,7 @@ export default function Home() {
         src='https://res.cloudinary.com/dts4wxk4i/image/upload/v1601265619/shopping/kurtas_ieiwny.jpg'
       />
     </div>
-    <div>
-      <img
-        alt=''
-        src='https://res.cloudinary.com/dts4wxk4i/image/upload/v1601265619/shopping/casual-shirts_zhifye.jpg'
-      />
-    </div>
+    
   </InfiniteCarousel>
   <Contact />
     </div>
