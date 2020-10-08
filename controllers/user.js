@@ -18,7 +18,7 @@ const register= (req, res, next) => {
         return res.status(422).json({message:"Please provide proper credentials"});
     }
 
-    bcrypt.hash(req.body.password,14,function(err,hash){
+    bcrypt.hash(req.body.password,14,function(err,hash){ 
         if(err){
             return res.status(422).json({message:"Please provide proper credentials"});
         }
@@ -34,13 +34,25 @@ const register= (req, res, next) => {
                 return res.status(409).json({message:"Username already in use"})
             }else {
                 console.log('Register success. Username:'+user.username);
-                return res.status(200).json({message:"Register success!"},user)
+                return res.status(200).json({message:"Register success!"})
             }
         })
     })
 
 }
 
+const getallUsers=async (req,res,next)=>{
+    const users=await UserModel.find();
+    try{
+        if(users.length>0){
+            res.json(users).status(200);
+        }else{
+            res.json({message:"No users Registred"}).status(200);
+        }
+    }catch(err){
+        res.send(err.message).status(500);
+    }
+}
 // Handles User Login
 const login= (req, res, next) => {
     if(!req.body){
@@ -120,4 +132,5 @@ const logout= (req, res, next) => {
     
 }
 
-module.exports = { register, login, logout };
+
+module.exports = { register, login, logout,getallUsers };

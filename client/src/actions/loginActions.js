@@ -9,6 +9,7 @@ export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 export const LOGOUT_FAILED = "LOGOUT_FAILED";
 export const FETCH_LOADING = "FETCH_LOADING";
 export const LOADING_DONE = "LOADING_DONE";
+export const GET_PROFILE="GET_PROFILE"
 
 //ACTIONS
 
@@ -22,7 +23,7 @@ export const register = (user) => {
         body: JSON.stringify(user)
         }
         dispatch(fetchLoading());
-        fetch("/register",request).then(response => {
+        fetch("http://localhost:5000/register",request).then(response => {
             dispatch(loadingDone());
             if(response.ok){
                 alert('success');
@@ -52,6 +53,7 @@ export const login = (user) => {
             if(response.ok){
                 response.json().then(data => {
                     dispatch(loginSuccess(data.token));
+                    dispatch(getProfile(data.token));
                     dispatch(getList(data.token));
                 }).catch(error => dispatch(loginFailed('JSON parse error: '+error)));
             }
@@ -86,6 +88,28 @@ export const logout = (token) => {
         })
     }
 }
+export const getProfile=(token)=>{
+    return dispatch => {
+        let request = {
+        method:"GET",
+        mode:"cors",
+        headers:{"Content-type":"application/json",
+            "token":token}
+        }
+        dispatch(fetchLoading());
+        fetch("http://localhost:5000/api/profile",request).then(response => {
+            dispatch(loadingDone());
+            if(response.ok){
+                response.json().then(data=>{
+                    dispatch(getProfileSuccess(data));
+                })
+            }
+            
+        }).catch(error => {
+            dispatch(loadingDone());
+        })
+    }
+}
 
 
 //ACTION CREATORS
@@ -94,6 +118,13 @@ export const logout = (token) => {
 export const fetchLoading = () => {
     return {
         type: FETCH_LOADING
+    }
+}
+export const getProfileSuccess=(data)=>{
+   console.log(data);
+    return {
+        type: GET_PROFILE,
+        data: data
     }
 }
 

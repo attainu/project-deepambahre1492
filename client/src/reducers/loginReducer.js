@@ -2,7 +2,7 @@ import {
     LOGIN_SUCCESS,LOGIN_FAILED,
     REGISTER_SUCCESS,REGISTER_FAILED,
     LOGOUT_SUCCESS,LOGOUT_FAILED,
-    FETCH_LOADING,LOADING_DONE
+    FETCH_LOADING,LOADING_DONE,GET_PROFILE
 } from '../actions/loginActions';
 
 
@@ -17,7 +17,8 @@ const getInitialState = () => {
             isLogged: false,
             token:"",
             loading:false,
-            error:""
+            error:"",
+            profile:{}
         }
     }
 }
@@ -39,7 +40,13 @@ const loginReducer = (state=initialState,action) => {
             }
             saveToStorage(tempState);
         return tempState;
-
+        case GET_PROFILE:
+            tempState={
+                ...state,
+                profile:action.data
+            }
+            saveToStorage(tempState);
+            return tempState
         case LOADING_DONE:
             tempState={
                 ...state,

@@ -50,8 +50,18 @@ export default class EditRow extends React.Component{
                 <Table.Cell>
                     <input type='text' name='productColor' required={true} value={this.state.productColor} onChange={this.onChange} />
                 </Table.Cell>
+
                 <Table.Cell>
-                    <input type='file' name='productColor' required={true} value={this.state.productImage} onChange={this.onChange} />
+                    <input type='text' name='product Description' required={true} minimum='0' value={this.state.productDescription} onChange={this.onChange} />
+                </Table.Cell>
+                <Table.Cell>
+                    <input type='text' name='product Brand' required={true} minimum='0' step='0.01' value={this.state.productBrand} onChange={this.onChange} />
+                </Table.Cell>
+                <Table.Cell>
+                    <input type='text' name='product Size' required={true} value={this.state.productSize} onChange={this.onChange} />
+                </Table.Cell>
+                <Table.Cell>
+                    <input type='file' name='product Image' required={true} value={this.state.productImage} onChange={this.onChange} />
                 </Table.Cell>
                 <Table.Cell>
                     <Button color='green' onClick={this.editItem}>Save</Button>

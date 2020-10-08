@@ -2,8 +2,8 @@ import React from 'react';
 import {Button} from 'semantic-ui-react';
 import Row from './CategoriesRow';
 import {connect} from 'react-redux';
-import {getList} from '../../actions/productActions';
-import { Card, Pagination } from 'semantic-ui-react';
+import {getList,getCart} from '../../actions/productActions';
+import { Card} from 'semantic-ui-react';
 class productList extends React.Component{
 
     constructor(props){
@@ -11,8 +11,12 @@ class productList extends React.Component{
         this.state = {
             search:""
         }
+        
     }
-
+    componentDidMount(){
+        this.props.dispatch(getList(this.props.token,''));
+        this.props.dispatch(getCart(this.props.token));
+    }
     onChange = (event) => {
         let state = {};
         state[event.target.name] = event.target.value;
@@ -26,7 +30,7 @@ class productList extends React.Component{
         })
     }
 
-
+    
     // key is mandatory and must be unique!!!!
     render(){
 
@@ -44,13 +48,12 @@ class productList extends React.Component{
                 <div className="searchProduct">
                 <input type="text" className="form-control searchbar-width" placeholder="Search by Product Name" name = "search" onChange = {this.onChange}
                     value = {this.state.search} />
-                <Button className="btn-ecommarce" style={{marginLeft:10}} onClick={this.searchByType}>Search</Button>
+                <Button className="btn btn-ecommarce" style={{marginLeft:10}} onClick={this.searchByType}>Search</Button>
                 </div>
                 <div className="row">
                     <div className="product-view">
                        <Card.Group>{items}</Card.Group>
-                       
-                       <Pagination defaultActivePage={1} totalPages={10} />
+
                     </div>
                 </div>
             </div>
@@ -65,7 +68,8 @@ class productList extends React.Component{
 const mapStateToProps = (state) => {
     return {
         token: state.login.token,
-        productlist: state.product.list
+        productlist: state.product.list,
+        // addToCart:addCart(id)
     }
 }
 

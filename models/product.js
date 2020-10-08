@@ -1,12 +1,20 @@
 const mongoose = require("mongoose");
 
-let Schema = mongoose.Schema({
+let ProductSchema = mongoose.Schema({
     productName: String,
-    quantity: Number,
+    quantity: String,
     price: Number,
     productColor: String,
     productImage:String,
-    user:{type:String,indexed:true}
+    productDescription: String,
+    productBrand: String,
+    productSize: String,
+    user:{type:String,indexed:true},
+    orders: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Order'
+     }]
 })
 
-module.exports = mongoose.model("ShoppingItem",Schema);
+
+module.exports = mongoose.model("Product",ProductSchema);

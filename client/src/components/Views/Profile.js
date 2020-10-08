@@ -1,15 +1,28 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component} from 'react';
 import { connect } from 'react-redux';
 
 class Profile extends Component {
 
   render() {
+    console.log(this.props.profile);
     return (
-      <Fragment>
-          <span className="profile">
-            <strong>Welcome {}</strong>
-          </span>
-      </Fragment>
+      <div className="row justify">
+        <div className="col-md-4 col-md-offset-4">
+          <div className="profile">
+            <div className="row justify">
+              <div className="col-md-6">
+              <img src= {this.props.profile.profile} alt={this.props.profile.profile} className="img-fluid" style={{height:'15rem', width:'auto' }} / >
+               </div>
+               <div className="col-md-6" style={{position:'relative', top:'5rem' }}>
+               <p>Welcome <strong>{this.props.profile.username}</strong></p>
+               <p> {this.props.profile.email}</p>
+               </div>
+            </div>
+            </div>
+            </div>
+            </div>
+        
+      
     );
 
   }
@@ -17,8 +30,8 @@ class Profile extends Component {
 
 const mapStateToProps = (state) => {
   return {
-      user: state.login.user,
-      data: state.login.data
+    
+      profile:state.login.profile
   }
 }
 

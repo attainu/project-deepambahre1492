@@ -253,6 +253,9 @@ li.MuiListItem-root.MuiListItem-gutters a {
 .linkedin{
   background-color:#007bb6
 }
+.footer-copyright {
+  color: #e52b34;
+}
 
 /*----------Form CSS--------------*/
 .login-form {
@@ -270,6 +273,8 @@ li.MuiListItem-root.MuiListItem-gutters a {
 .AddProduct{
   margin-top: 8rem;
   margin-bottom: 5rem;
+  text-align: center;
+  justify-content: center;
 }
 .Cetegories{
   position: relative;
@@ -360,7 +365,7 @@ td {
 }
 .searchProduct {
   width: 100%;
-    margin-bottom: 8rem;
+    margin-bottom: 6rem;
     display: flex;
     justify-content: center;
 }
@@ -374,6 +379,7 @@ td {
   margin-top: 0.5rem;
   margin-top: 0.5rem;
     padding: 0rem 0rem;
+    min-height: 3rem;
 }
 .ui.pagination.menu {
   margin-top: 2rem;
@@ -393,6 +399,7 @@ div#ContactUs {
   bottom: 0;
   color: #fff;
   right: 0;
+  cursor: pointer;
 }
 
 .scroll-to-top i {
@@ -402,6 +409,35 @@ div#ContactUs {
     background: #e52b34;
     width: 3rem;
     height: 3rem;
+}
+.cart-icon {
+  position: relative;
+  top: -0.5rem;
+}
+.cart-icon i {
+  font-weight: bolder;
+}
+.ui.table:last-child {
+  text-align: center;
+}
+.ui.button {
+  background: #e52b34;
+  color: #fff;
+}
+span.inline-remove-btn {
+  display: flex;
+}
+.OrderSuccess{
+  margin: 10rem 0rem;
+}
+span.cart-order-btns {
+  display: inline-flex;
+}
+span.cart-order-btns a {
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
 }
 /*------------Slider---------------*/
 
@@ -546,6 +582,63 @@ div#ContactUs {
 }
 
 
+/*----------Order------------*/
+.cartBox {
+  margin: 0;
+  margin: 10rem 1rem;
+}
+.cartBox table {
+  border: 1px solid;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  padding: 2rem 1rem;
+  display: block;
+}
+.clear-cart {
+  position: relative;
+  top: 1rem;
+}
+.cartBox table tbody tr {
+  max-width: 200px;
+  padding: 0rem 1rem;
+}
+.cartBox table tbody tr th{
+  padding: 1rem;
+}
+.cartBox table tbody tr td {
+  max-width: 18rem;
+}
+
+/*--------Product Page---------*/
+
+.profile{
+  margin: 6rem 0rem;
+}
+.addtoCart {
+  position: relative;
+    top: 1rem;
+    margin-bottom: 2rem;
+}
+.counter-increment{
+padding: 0rem 2rem;
+}
+b.count-space {
+  margin-right: 1rem;
+}
+.profile h3 {
+  margin-bottom: 2rem;
+}
+.profile p {
+  line-height: 1.5;
+  text-align: left;
+}
+.Product-Image {
+  border: 1px solid #ddd;
+    padding: 1rem 0rem;
+    box-shadow: 0px 0px 11px 0px #ddd;
+}
+/*--------Media Query---------*/
   @media (max-height: 500px) {
     .slider-wrapper, .slide {
       height: calc(100vh);

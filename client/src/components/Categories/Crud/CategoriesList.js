@@ -16,7 +16,7 @@ class productList extends React.Component{
             search:""
         }
     }
-
+    
     onChange = (event) => {
         let state = {};
         state[event.target.name] = event.target.value;
@@ -95,10 +95,10 @@ class productList extends React.Component{
         <div className="row justify">
           <div className="col-md-10 col-md-offset-1">
             <div className="AddProduct form-inline">
-                <div className="form-inline">
-                <input type="text" name = "search" placeholder="Search by Product Name" onChange = {this.onChange}
+            <div className="searchProduct">
+                <input type="text" className="form-control searchbar-width" placeholder="Search by Product Name" name = "search" onChange = {this.onChange}
                     value = {this.state.search} />
-                <Button style={{marginLeft:10}} className="btn-ecommarce" onClick={this.searchByType}>Search</Button>
+                <Button className="btn-ecommarce" style={{marginLeft:10}} onClick={this.searchByType}>Search</Button>
                 </div>
                 <Table celled>
                     <Table.Header>
@@ -107,9 +107,10 @@ class productList extends React.Component{
                             <Table.HeaderCell>Quantity</Table.HeaderCell>
                             <Table.HeaderCell>Price</Table.HeaderCell>
                             <Table.HeaderCell>Product Color</Table.HeaderCell>
+                            <Table.HeaderCell>Product Brand</Table.HeaderCell>
+                            <Table.HeaderCell>Product Size</Table.HeaderCell>
                             <Table.HeaderCell>product Image</Table.HeaderCell>
                             <Table.HeaderCell>Remove</Table.HeaderCell>
-                            <Table.HeaderCell>Edit</Table.HeaderCell>
                         </Table.Row>
                     </Table.Header>
                     <Table.Body>
@@ -128,7 +129,9 @@ class productList extends React.Component{
 const mapStateToProps = (state) => {
     return {
         token: state.login.token,
-        productlist: state.product.list
+       productlist: state.product.list
+        //cart:state.product.cart,
+        //
     }
 }
 

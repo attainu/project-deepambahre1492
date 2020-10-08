@@ -48,7 +48,7 @@ const Footer = () => {
         <div className="footer-bottom-container">
         <p>&copy; {1900 + new Date().getYear()} , made with{" "}
       <Favorite className="" /> &nbsp; by {" "}
-      &nbsp;<a href="/#" className=""> Deepam Bahre</a>{" "}&nbsp;
+      &nbsp;<a href="/#" className="footer-copyright"> Deepam Bahre</a>{" "}&nbsp;
       for a better web.</p>
         <List className="footer-bottom-right">
           <ListItem className="social-icon">
